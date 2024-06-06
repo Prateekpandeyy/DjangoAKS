@@ -1,0 +1,2 @@
+python manage.py makemigrations (migrate database)
+python manage.py migrate(to migrate database)

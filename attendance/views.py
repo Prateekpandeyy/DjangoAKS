@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from attendance.models import ContactUs
 #from attendance.models import Contact
 
 def runFirstPro(request):
@@ -12,6 +13,16 @@ def showMyname(request):
 def addBoot(request):
     return render(request, "bootstr.html")
 def contactUs(request):
+    print("request", request)
+    if(request.method == "POST"):
+        email = request.POST['email']
+        password = request.POST['password']
+        address1 = request.POST['address1']
+        address2 = request.POST['address2']
+        city = request.POST['city']
+        ins = ContactUs(email = email, password = password, address1 = address1, address2 = address2, city = city)
+        ins.save()
+
     return render(request, 'contact.html')
 
 def aboutMe(request):
